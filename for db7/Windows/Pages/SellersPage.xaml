@@ -1,0 +1,164 @@
+﻿<Page x:Class="for_db7.Windows.Pages.SellersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:for_db7.Windows.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1080"
+      Title="SellersPage">
+
+    <Grid Background="#FFCBFFF0">
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="31*"/>
+            <RowDefinition Height="177*"/>
+            <RowDefinition Height="152*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="540*"/>
+            <ColumnDefinition Width="523*"/>
+            <ColumnDefinition Width="17*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <DataGrid x:Name="SellersDataGrid" d:ItemsSource="{d:SampleData ItemCount=15}" Margin="10,17,80,0" Height="327" VerticalAlignment="Top" AutoGenerateColumns="False" Grid.Row="1" SelectionChanged="SellersDataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="User Id" Binding="{Binding selId}" Visibility="Hidden"></DataGridTextColumn>
+                <DataGridTextColumn Header="First name" Binding="{Binding firstName}" Visibility="Visible"></DataGridTextColumn>
+                <DataGridTextColumn Header="Second name" Binding="{Binding secondName}" Visibility="Visible"></DataGridTextColumn>
+                <DataGridTextColumn Header="Patrynomic" Binding="{Binding patrynomic}" Visibility="Visible"></DataGridTextColumn>
+                <DataGridTextColumn Header="Phone number" Binding="{Binding phoneNumber}" Visibility="Visible"></DataGridTextColumn>
+                <DataGridTextColumn Header="Salary" Binding="{Binding salary}" Visibility="Visible"></DataGridTextColumn>
+                <DataGridTextColumn Header="End of Contract" Binding="{Binding endOfContract}" Visibility="Visible"></DataGridTextColumn>
+                <DataGridTextColumn Header="Outlet Section Id" Binding="{Binding osId}" Visibility="Hidden"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <TabControl Margin="45,19,10,10" Grid.Column="1" Grid.Row="1">
+
+            <TabItem Header="Add">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="#FFA2DFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FFD9F5FF">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="115*"/>
+                        <ColumnDefinition Width="116*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="36*"/>
+                        <RowDefinition Height="164*"/>
+                        <RowDefinition Height="24*"/>
+                        <RowDefinition Height="73*"/>
+                    </Grid.RowDefinitions>
+
+
+                    <Label Content="Enter new seller information" HorizontalAlignment="Left" Margin="154,10,0,0" VerticalAlignment="Top" Height="26" Width="154" Grid.ColumnSpan="2"/>
+
+                    <Label Content="First name:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="73" Grid.Row="1"/>
+                    <TextBox x:Name="AddFirstNameTextBox" HorizontalAlignment="Left" Margin="98,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26" Grid.Row="1"/>
+
+                    <Label Content="Second name:" HorizontalAlignment="Left" Margin="9,48,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Row="1" RenderTransformOrigin="0.512,0.232"/>
+                    <TextBox x:Name="AddSecondNameTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26" Margin="98,48,0,0" Grid.Row="1"/>
+
+                    <Label Content="Patrynomic:" HorizontalAlignment="Left" Margin="10,82,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Row="1"/>
+                    <TextBox x:Name="AddPatrynomicTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26" Margin="99,82,0,0" Grid.Row="1"/>
+
+                    <Label Content="Enter phone :" HorizontalAlignment="Left" Margin="13,10,0,0" VerticalAlignment="Top" Height="26" Width="115" Grid.Row="1" Grid.Column="1"/>
+                    <TextBox x:Name="AddPhoneNumberTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26" Margin="102,10,0,0" Grid.Row="1" Grid.Column="1"/>
+
+                    <Label Content="Enter salary:" HorizontalAlignment="Left" Margin="13,48,0,0" VerticalAlignment="Top" Height="26" Width="95" Grid.Row="1" Grid.Column="1"/>
+                    <TextBox x:Name="AddSalaryTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26" Margin="102,48,0,0" Grid.Row="1" Grid.Column="1"/>
+
+                    <Label Content="Choose date:" HorizontalAlignment="Left" Margin="13,82,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Row="1" Grid.Column="1"/>
+                    <DatePicker x:Name="AddEndOfContractDatePicker" SelectedDateFormat="Short" HorizontalAlignment="Left" Margin="102,82,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" Width="120" Height="26"/>
+
+                    <Label Content="Choose outlet section:" HorizontalAlignment="Left" Margin="9,132,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.Row="1"/>
+                    <ComboBox x:Name="AddOutletSectionComboBox" HorizontalAlignment="Left" Margin="98,134,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120"/>
+
+                    <Button x:Name="AddSellerButton" Content="Add" HorizontalAlignment="Left" Margin="132,0,0,0" VerticalAlignment="Center" Width="70" Grid.Row="2" Height="20" Grid.Column="1" Click="AddSellerButton_Click"/>
+                </Grid>
+            </TabItem>
+
+
+            <TabItem Header="Find">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="#FF7FD3FF" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FFD9F5FF">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="41*"/>
+                        <RowDefinition Height="192*"/>
+                        <RowDefinition Height="64*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0*"/>
+                        <ColumnDefinition Width="230*"/>
+                        <ColumnDefinition Width="229*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="Choose seller from the table" HorizontalAlignment="Left" Margin="153,10,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="2" Height="26" Width="154"/>
+
+                    <Label x:Name="OldFirstNameLabel" Content="Current first name:" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Width="97"/>
+                    <Label x:Name="CurrentFirstNameLabel" Content="Seller not selected" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" RenderTransformOrigin="0.491,-0.371" Width="102"/>
+                    <Label x:Name="NewFirstNameLabel" Content="New first name:" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Width="87"/>
+                    <TextBox x:Name="EditFirstNameTextBox" HorizontalAlignment="Left" Margin="102,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="22" Grid.Row="1"/>
+
+                    <Label x:Name="OldSecondNameLabel" Content="Current second name:" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Grid.Column="1" Width="87"/>
+                    <Label x:Name="CurrentSecondNameLabel" Content="Seller not selected" HorizontalAlignment="Left" Margin="121,67,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Grid.Column="1" Width="101"/>
+                    <Label x:Name="NewSecondNameLabel" Content="New second name:" HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" Height="24" Grid.Row="1" Grid.Column="1" Width="87"/>
+                    <TextBox x:Name="EditSecondNameTextBox" HorizontalAlignment="Left" Margin="102,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="24" Grid.Row="1"/>
+
+                    <Label x:Name="OldPatrynomicLabel" Content="Current patrynomic:" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Grid.Column="1" Width="111"/>
+                    <Label x:Name="CurrentPatrynomicLabel" Content="Seller not selected" HorizontalAlignment="Left" Margin="121,125,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Grid.Column="1" Width="101"/>
+                    <Label x:Name="NewPatrynomicLabel" Content="New patrynomic:" HorizontalAlignment="Left" Margin="0,156,0,0" VerticalAlignment="Top" Height="24" Grid.Row="1" Grid.Column="1" Width="97"/>
+                    <TextBox x:Name="EditPatrynomicTextBox" HorizontalAlignment="Left" Margin="102,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="24" Grid.Row="1"/>
+
+                    <Label x:Name="OldPhoneNumberLabel" Content="Current phoneNumber:" HorizontalAlignment="Left" Margin="8,10,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Grid.Column="2" Width="87"/>
+                    <Label x:Name="CurrentPhoneNumberLabel" Content="Seller not selected" HorizontalAlignment="Left" Margin="119,10,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Grid.Column="2" Width="101"/>
+                    <Label x:Name="NewPhoneNumberLabel" Content="New phone:" HorizontalAlignment="Left" Margin="8,38,0,0" VerticalAlignment="Top" Height="24" Grid.Row="1" Grid.Column="2" Width="87"/>
+                    <TextBox x:Name="EditPhoneNumberTextBox" HorizontalAlignment="Left" Margin="100,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="2" Height="24" Grid.Row="1"/>
+
+                    <Label x:Name="OldSalaryLabel" Content="Current salary:" HorizontalAlignment="Left" Margin="8,70,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Grid.Column="2" Width="87"/>
+                    <Label x:Name="CurrentSalaryLabel" Content="Seller not selected" HorizontalAlignment="Left" Margin="119,68,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Grid.Column="2" Width="101"/>
+                    <Label x:Name="NewSalaryLabel" Content="New salary:" HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" Height="24" Grid.Row="1" Grid.Column="2" Width="87"/>
+                    <TextBox x:Name="EditSalaryTextBox" HorizontalAlignment="Left" Margin="100,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="2" Height="24" Grid.Row="1"/>
+
+                    <Label x:Name="OldEndOfContractLabel" Content="Current contract&#xD;&#xA;end:" HorizontalAlignment="Left" Margin="8,120,0,0" VerticalAlignment="Top" Height="45" Grid.Row="1" Grid.Column="2" Width="87"/>
+                    <Label x:Name="CurrentEndOfContractLabel" Content="Seller not selected" HorizontalAlignment="Left" Margin="119,125,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Grid.Column="2" Width="101"/>
+                    <Label x:Name="NewEndOfContractLabel" Content="New contract:" HorizontalAlignment="Left" Margin="8,158,0,0" VerticalAlignment="Top" Height="24" Grid.Row="1" Grid.Column="2" Width="87"/>
+                    <DatePicker x:Name="EditEndOfContractDatePicker" SelectedDateFormat="Short" HorizontalAlignment="Left" Margin="100,156,0,0" VerticalAlignment="Top" Width="120" Grid.Column="2" Height="24" Grid.Row="1"/>
+
+
+                    <Button x:Name="DeleteSellerButton" Content="Delete seller" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="41,0,0,0" VerticalAlignment="Center" Width="75" Height="28" Grid.Row="2" Click="DeleteSellerButton_Click"/>
+                    <Button x:Name="EditSellerButton" Content="Edit seller" HorizontalAlignment="Left" Margin="96,0,0,0" VerticalAlignment="Center" Width="75" Height="28"  Grid.Row="2" Grid.Column="2" Click="EditSellerButton_Click"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <Label Content="SELLERS TABLE" HorizontalAlignment="Left" Margin="443,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" FontFamily="Arial Black" FontSize="20" Height="33" Width="194"/>
+
+        <ComboBox x:Name="FilterComboBox" HorizontalAlignment="Left" Margin="10,41,0,0" Grid.Row="2" VerticalAlignment="Top" Width="120" SelectionChanged="FilterComboBox_SelectionChanged" >
+            <ComboBoxItem Content="From all trade outlets"/>
+            <ComboBoxItem Content="By trade outlet type"/>
+            <ComboBoxItem Content="By trade outlet name"/>
+            <ComboBoxItem Content="Profit from seller"/>
+        </ComboBox>
+
+        <Label Content="Get seller's salary&#xD;&#xA;by trade outlet" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="2" VerticalAlignment="Top" Width="120" Height="41"/>
+
+        <Label x:Name="FilterOutletLabel" Content="Enter" HorizontalAlignment="Left" Margin="154,10,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+
+        <TextBox x:Name="FilterTextBox" HorizontalAlignment="Left" Margin="143,43,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Enter filter" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="FilterButton" Content="Execute" HorizontalAlignment="Left" Margin="292,41,0,0" Grid.Row="2" VerticalAlignment="Top" Click="FilterButton_Click" />
+    </Grid>
+</Page>

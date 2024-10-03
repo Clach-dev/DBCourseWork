@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "spp3\API.csproj", "{2F510D20-DEF1-41E9-971C-CFCF97552A89}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesctopUI", "for db7\DesctopUI.csproj", "{B5DDDBA6-D72C-4935-8D21-2444894AD831}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F510D20-DEF1-41E9-971C-CFCF97552A89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F510D20-DEF1-41E9-971C-CFCF97552A89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F510D20-DEF1-41E9-971C-CFCF97552A89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F510D20-DEF1-41E9-971C-CFCF97552A89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5DDDBA6-D72C-4935-8D21-2444894AD831}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5DDDBA6-D72C-4935-8D21-2444894AD831}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5DDDBA6-D72C-4935-8D21-2444894AD831}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5DDDBA6-D72C-4935-8D21-2444894AD831}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A3BCAA4-BA9D-485C-A227-582E560D5D14}
+	EndGlobalSection
+EndGlobal

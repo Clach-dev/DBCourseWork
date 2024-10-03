@@ -1,0 +1,44 @@
+﻿<Window x:Class="for_db7.DataWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:for_db7"
+        mc:Ignorable="d"
+        Title="DataWindow" Height="720" Width="1080" ResizeMode="CanResize" WindowState="Maximized" >
+
+    <Window.Resources>
+        <Style x:Key="btnRound" TargetType="Button">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="6*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Background="LightCyan">
+
+            <Label Content="TABLES" HorizontalContentAlignment="Center" Background="#FF9CD8FF" Height="40" VerticalAlignment="Center" VerticalContentAlignment="Center"></Label>
+            <Button x:Name="CommercialOrganizationsPageButton" Style="{StaticResource btnRound}" Content="Commercial organizations" Height="40" Background="#FFB6EAFB" Margin="2,15,2,5" Click="CommercialOrganizationsPageButton_Click"></Button>
+            <Button x:Name="TradeOutletsPageButton" Style="{StaticResource btnRound}" Content="Trade outlets" Height="40" Background="#FFB6EAFB" Margin="2,0,2,5" Click="TradeOutletsPageButton_Click"></Button>
+            <Button x:Name="OutletSectionsPageButton" Style="{StaticResource btnRound}" Content="Outlet sections" Height="40" Background="#FFB6EAFB" Margin="2,0,2,5" Click="OutletSectionsPageButton_Click"></Button>
+            <Button x:Name="SectionManagesPageButton" Style="{StaticResource btnRound}" Content="Section managers" Height="40" Background="#FFB6EAFB" Margin="2,0,2,5" Click="SectionManagesPageButton_Click"></Button>
+            <Button x:Name="SellersPageButton" Style="{StaticResource btnRound}" Content="Sellers" Height="40" Background="#FFB6EAFB" Margin="2,0,2,5" Click="SellersPageButton_Click"></Button>
+            <Button x:Name="DealsPageButton" Style="{StaticResource btnRound}" Content="Deals" Height="40" Background="#FFB6EAFB" Margin="2,0,2,5" Click="DealsPageButton_Click"></Button>
+            <Button x:Name="CustomersPageButton" Style="{StaticResource btnRound}" Content="Customers" Height="40" Click="CustomersPageButton_Click" Background="#FFB6EAFB" Margin="2,0,2,5" ></Button>
+            <Button x:Name="BonusCardsPageButton" Style="{StaticResource btnRound}" Content="Bonus cards" Height="40" Click="BonusCardsPageButton_Click" Background="#FFB6EAFB" Margin="2,0,2,5"></Button>
+            <Button x:Name="ProductTypesPageButton" Style="{StaticResource btnRound}" Content="Product types" Height="40" Background="#FFB6EAFB" Margin="2,0,2,5" Click="ProductTypesPageButton_Click"></Button>
+            <Button x:Name="ProductsPageButton" Style="{StaticResource btnRound}" Content="Products" Height="40" Background="#FFB6EAFB" Margin="2,0,2,5" Click="ProductsPageButton_Click"></Button>
+            <Button x:Name="OrdersPageButton" Style="{StaticResource btnRound}" Content="Orders" Height="40" Background="#FFB6EAFB" Margin="2,0,2,5" Click="OrdersPageButton_Click"></Button>
+            <Button x:Name="SuppliersPageButton" Style="{StaticResource btnRound}" Content="Suppliers" Height="40" Background="#FFB6EAFB" Margin="2,0,2,5" Click="SuppliersPageButton_Click"></Button>
+            <Button x:Name="UsersPageButton" Style="{StaticResource btnRound}" Content="Users" Click="UsersPageButton_Click" Height="40" Background="#FFB6EAFB" Margin="2,0,2,5"/>
+        </StackPanel>
+        <Frame x:Name="ActiveFrame" Grid.Column="1" Content="Select table in the left box to manage" Background="#FFCBFFF0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+    </Grid>
+</Window>

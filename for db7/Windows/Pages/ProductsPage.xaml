@@ -1,0 +1,162 @@
+﻿<Page x:Class="for_db7.Windows.Pages.ProductsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:for_db7.Windows.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1080"
+      Title="ProductsPage">
+
+    <Grid Background="#FFCBFFF0">
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="31*"/>
+            <RowDefinition Height="177*"/>
+            <RowDefinition Height="152*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="540*"/>
+            <ColumnDefinition Width="523*"/>
+            <ColumnDefinition Width="17*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <DataGrid x:Name="ProductsDataGrid" d:ItemsSource="{d:SampleData ItemCount=15}" Margin="10,17,80,0" Height="327" VerticalAlignment="Top" AutoGenerateColumns="False" Grid.Row="1" SelectionChanged="ProductsDataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Product Id" Binding="{Binding prId}" Visibility="Hidden"></DataGridTextColumn>
+                <DataGridTextColumn Header="Name" Binding="{Binding name}" Visibility="Visible"></DataGridTextColumn>
+                <DataGridTextColumn Header="Price" Binding="{Binding price}" Visibility="Visible"></DataGridTextColumn>
+                <DataGridTextColumn Header="Quantity" Binding="{Binding quantity}" Visibility="Visible"></DataGridTextColumn>
+                <DataGridTextColumn Header="Product Type" Binding="{Binding ProductType.name}" Visibility="Visible"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <TabControl Margin="45,19,10,10" Grid.Column="1" Grid.Row="1">
+
+            <TabItem Header="Add">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="#FFA2DFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FFD9F5FF">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="36*"/>
+                        <RowDefinition Height="164*"/>
+                        <RowDefinition Height="24*"/>
+                        <RowDefinition Height="73*"/>
+                    </Grid.RowDefinitions>
+
+
+                    <Label Content="Enter new product" HorizontalAlignment="Left" Margin="173,10,0,0" VerticalAlignment="Top" Height="26" Width="112"/>
+
+                    <Label Content="Name:" HorizontalAlignment="Left" Margin="121,10,0,0" VerticalAlignment="Top" Height="26" Width="45" Grid.Row="1"/>
+                    <TextBox x:Name="AddNameTextBox" HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26" Grid.Row="1"/>
+
+                    <Label Content="Price:" HorizontalAlignment="Left" Margin="121,48,0,0" VerticalAlignment="Top" Height="26" Width="40" Grid.Row="1" RenderTransformOrigin="0.512,0.232"/>
+                    <TextBox x:Name="AddPriceTextBox" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26" Margin="0,48,0,0" Grid.Row="1"/>
+
+                    <Label Content="Quantity:" HorizontalAlignment="Left" Margin="107,82,0,0" VerticalAlignment="Top" Height="26" Width="59" Grid.Row="1"/>
+                    <TextBox x:Name="AddQuantityTextBox" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26" Margin="0,82,0,0" Grid.Row="1"/>
+
+                    <Label Content="Choose product type:" HorizontalAlignment="Left" Margin="41,120,0,0" VerticalAlignment="Top" Height="27" Width="125" Grid.Row="1"/>
+                    <ComboBox x:Name="AddProductTypeComboBox" HorizontalAlignment="Left" Margin="169,125,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding name}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <Button x:Name="AddProductButton" Content="Add" HorizontalAlignment="Left" Margin="362,0,0,0" VerticalAlignment="Center" Width="70" Grid.Row="2" Height="20" Click="AddProductButton_Click"/>
+                </Grid>
+            </TabItem>
+
+
+            <TabItem Header="Find">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="#FF7FD3FF" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FFD9F5FF">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="41*"/>
+                        <RowDefinition Height="192*"/>
+                        <RowDefinition Height="64*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0*"/>
+                        <ColumnDefinition Width="230*"/>
+                        <ColumnDefinition Width="229*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="Choose product from the table" HorizontalAlignment="Left" Margin="144,10,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="2" Height="26" Width="174"/>
+
+                    <Label x:Name="OldNameLabel" Content="Current name:" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Width="87"/>
+                    <Label x:Name="CurrentNameLabel" Content=" not selected" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" RenderTransformOrigin="0.491,-0.371" Width="102"/>
+                    <Label x:Name="NewNameLabel" Content="New name:" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Width="87"/>
+                    <TextBox x:Name="EditNameTextBox" HorizontalAlignment="Left" Margin="102,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="22" Grid.Row="1"/>
+
+                    <Label x:Name="OldPriceLabel" Content="Current price:" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Grid.Column="1" Width="87"/>
+                    <Label x:Name="CurrentPriceLabel" Content=" not selected" HorizontalAlignment="Left" Margin="121,67,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Grid.Column="1" Width="101"/>
+                    <Label x:Name="NewPriceLabel" Content="New price:" HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" Height="24" Grid.Row="1" Grid.Column="1" Width="87"/>
+                    <TextBox x:Name="EditPriceTextBox" HorizontalAlignment="Left" Margin="102,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="24" Grid.Row="1"/>
+
+                    <Label x:Name="OldQuantityLabel" Content="Current quantity:" HorizontalAlignment="Left" Margin="8,10,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Grid.Column="2" Width="99"/>
+                    <Label x:Name="CurrentQuantityLabel" Content=" not selected" HorizontalAlignment="Left" Margin="119,10,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Grid.Column="2" Width="101"/>
+                    <Label x:Name="NewQuantityLabel" Content="New quantity:" HorizontalAlignment="Left" Margin="8,38,0,0" VerticalAlignment="Top" Height="24" Grid.Row="1" Grid.Column="2" Width="87"/>
+                    <TextBox x:Name="EditQuantityTextBox" HorizontalAlignment="Left" Margin="100,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="2" Height="24" Grid.Row="1"/>
+
+                    <Label x:Name="OldTypeLabel" Content="Current type:" HorizontalAlignment="Left" Margin="8,70,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Grid.Column="2" Width="87"/>
+                    <Label x:Name="CurrentTypeLabel" Content=" not selected" HorizontalAlignment="Left" Margin="119,68,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Grid.Column="2" Width="101"/>
+                    <Label x:Name="NewTypeLabel" Content="New type:" HorizontalAlignment="Left" Margin="24,96,0,0" VerticalAlignment="Top" Height="24" Grid.Row="1" Grid.Column="2" Width="71"/>
+
+
+                    <Button x:Name="DeleteProductButton" Content="Delete product" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="41,0,0,0" VerticalAlignment="Center" Width="75" Height="28" Grid.Row="2" Click="DeleteProductButton_Click"/>
+                    <Button x:Name="EditProductButton" Content="Edit product" HorizontalAlignment="Left" Margin="96,0,0,0" VerticalAlignment="Center" Width="75" Height="28"  Grid.Row="2" Grid.Column="2" Click="EditProductButton_Click" />
+                    <ComboBox x:Name="EditProductTypeComboBox" Grid.Column="2" HorizontalAlignment="Left" Margin="100,94,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding name}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <Label Content="PRODUCTS TABLE" HorizontalAlignment="Left" Margin="435,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" FontFamily="Arial Black" FontSize="20" Height="33" Width="210"/>
+
+        <ComboBox x:Name="FilterComboBox" HorizontalAlignment="Left" Margin="10,41,0,0" Grid.Row="2" VerticalAlignment="Top" Width="120" SelectionChanged="FilterComboBox_SelectionChanged"  >
+            <ComboBoxItem Content="Get amount sales of product"/>
+            <ComboBoxItem Content="Get amount sales of product at outlet"/>
+            <ComboBoxItem Content="Get amount sales of product at outlets of type"/>
+        </ComboBox>
+
+        <Label Content="Enter filter" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="2" VerticalAlignment="Top" Width="120" Height="41"/>
+
+        <Label x:Name="FilterProductLabel" Content="Enter product" HorizontalAlignment="Left" Margin="154,10,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+
+        <TextBox x:Name="FilterTextBox" HorizontalAlignment="Left" Margin="143,43,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Enter filter" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="FilterButton" Content="Execute" HorizontalAlignment="Left" Margin="292,41,0,0" Grid.Row="2" VerticalAlignment="Top" Click="FilterButton_Click"  />
+        <DataGrid x:Name="FilteredDataGrid" Grid.Row="2" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,134,10,18" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Product.name}" Visibility="Visible"></DataGridTextColumn>
+                <DataGridTextColumn Header="price" Binding="{Binding Product.price}" Visibility="Visible"></DataGridTextColumn>
+                <DataGridTextColumn Header="Quantity" Binding="{Binding Product.quantity}" Visibility="Visible"></DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox x:Name="FilterOutletTextBox" HorizontalAlignment="Left" Margin="143,96,0,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="FilterOutletLabel" Content="Enter" HorizontalAlignment="Left" Margin="184,70,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+    </Grid>
+</Page>

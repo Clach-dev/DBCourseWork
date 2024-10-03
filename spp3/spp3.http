@@ -1,0 +1,6 @@
+@spp3_HostAddress = http://localhost:5123
+
+GET {{spp3_HostAddress}}/shop/
+Accept: application/json
+
+###

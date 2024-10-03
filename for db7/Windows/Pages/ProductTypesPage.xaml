@@ -1,0 +1,109 @@
+﻿<Page x:Class="for_db7.Windows.Pages.ProductTypesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:for_db7.Windows.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1080"
+      Title="ProductTypesPage">
+
+    <Grid Background="#FFCBFFF0">
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="31*"/>
+            <RowDefinition Height="177*"/>
+            <RowDefinition Height="152*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="540*"/>
+            <ColumnDefinition Width="523*"/>
+            <ColumnDefinition Width="17*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <DataGrid x:Name="ProductTypesDataGrid" d:ItemsSource="{d:SampleData ItemCount=15}" Margin="10,17,80,0" Height="327" VerticalAlignment="Top" AutoGenerateColumns="False" Grid.Row="1" SelectionChanged="ProductTypesDataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Product type Id" Binding="{Binding ptId}" Visibility="Hidden"></DataGridTextColumn>
+                <DataGridTextColumn Header="Type" Binding="{Binding name}" Visibility="Visible"></DataGridTextColumn>
+                <DataGridTextColumn Header="Age Limit" Binding="{Binding ageLimit}" Visibility="Visible"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <TabControl Margin="45,19,10,10" Grid.Column="1" Grid.Row="1">
+
+            <TabItem Header="Add">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="#FFA2DFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FFD9F5FF">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="36*"/>
+                        <RowDefinition Height="164*"/>
+                        <RowDefinition Height="24*"/>
+                        <RowDefinition Height="73*"/>
+                    </Grid.RowDefinitions>
+
+
+                    <Label Content="Enter new product type information" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Height="26" Width="204"/>
+
+                    <Label Content="Type:" HorizontalAlignment="Left" Margin="124,23,0,0" VerticalAlignment="Top" Height="26" Width="42" Grid.Row="1"/>
+                    <TextBox x:Name="AddTypeTextBox" HorizontalAlignment="Center" Margin="0,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26" Grid.Row="1"/>
+
+                    <Label Content="Age Limit:" HorizontalAlignment="Left" Margin="105,82,0,0" VerticalAlignment="Top" Height="26" Width="61" Grid.Row="1" RenderTransformOrigin="0.512,0.232"/>
+                    <TextBox x:Name="AddAgeLimitTextBox" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26" Margin="0,82,0,0" Grid.Row="1"/>
+
+                    <Button x:Name="AddProductTypeButton" Content="Add" HorizontalAlignment="Left" Margin="362,0,0,2" VerticalAlignment="Bottom" Width="70" Grid.Row="2" Height="20" Click="AddProductTypeButton_Click"/>
+                </Grid>
+            </TabItem>
+
+
+            <TabItem Header="Find">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="#FF7FD3FF" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FFD9F5FF">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="41*"/>
+                        <RowDefinition Height="82*"/>
+                        <RowDefinition Height="110*"/>
+                        <RowDefinition Height="64*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="Choose product type from the table" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="154"/>
+
+                    <Label x:Name="OldTypeLabel" Content="Current type:" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="84,19,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Width="82"/>
+                    <Label x:Name="CurrentTypeLabel" Content="not selected" HorizontalAlignment="Left" Margin="171,19,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" RenderTransformOrigin="0.491,-0.371" Width="94" Grid.Column="1"/>
+                    <Label x:Name="NewTypeLabel" Content="New type:" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="100,45,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Width="87"/>
+                    <TextBox x:Name="EditTypeTextBox" HorizontalAlignment="Center" Margin="0,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="22" Grid.Row="1"/>
+
+                    <Label x:Name="OldAgeLimitLabel" Content="Current age limit:" HorizontalAlignment="Left" Margin="60,8,0,0" VerticalAlignment="Top" Height="26" Grid.Row="2" Grid.Column="1" Width="106"/>
+                    <Label x:Name="CurrentAgeLimitLabel" Content="not selected" HorizontalAlignment="Left" Margin="171,8,0,0" VerticalAlignment="Top" Height="26" Grid.Row="2" Grid.Column="1" Width="101"/>
+                    <Label x:Name="NewAgeLimitLabel" Content="New age limit:" HorizontalAlignment="Left" Margin="78,39,0,0" VerticalAlignment="Top" Height="24" Grid.Row="2" Grid.Column="1" Width="88"/>
+                    <TextBox x:Name="EditAgeLimitTextBox" HorizontalAlignment="Center" Margin="0,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="24" Grid.Row="2"/>
+
+
+                    <Button x:Name="DeleteProductTypeButton" Content="Delete product type" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="41,0,0,0" VerticalAlignment="Center" Width="125" Height="28" Grid.Row="3" Click="DeleteProductTypeButton_Click"/>
+                    <Button x:Name="EditProductTypeButton" Content="Edit product type" HorizontalAlignment="Left" Margin="301,0,0,0" VerticalAlignment="Center" Width="109" Height="28"  Grid.Row="3" Grid.Column="1" Click="EditProductTypeButton_Click" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <Label Content="PRODUCT TYPES TABLE" HorizontalAlignment="Left" Margin="401,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" FontFamily="Arial Black" FontSize="20" Height="33" Width="278"/>
+    </Grid>
+</Page>

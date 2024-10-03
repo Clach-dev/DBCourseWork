@@ -1,0 +1,96 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:for_db7.Pages"
+      xmlns:Wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf" x:Class="for_db7.Pages.CustomersPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1080"
+      Title="CustomersPage">
+
+    <Grid Background="#FFCBFFF0" Margin="10,0,-10,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="85*"/>
+            <RowDefinition Height="313*"/>
+            <RowDefinition Height="322*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="283*"/>
+            <ColumnDefinition Width="194*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="AllCustomersDataGrid" d:ItemsSource="{d:SampleData ItemCount=30}" Margin="10,42,30,11" IsReadOnly="True" Grid.Row="1" SelectionChanged="AllCustomersDataGrid_SelectionChanged" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Customers Id" Binding="{Binding cuId}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="First name" Binding="{Binding firstName}" Visibility="Visible"/>
+                <DataGridTextColumn Header="Second name" Binding="{Binding secondName}" Visibility="Visible"/>
+                <DataGridTextColumn Header="Patrynomic" Binding="{Binding patrynomic}" Visibility="Visible"/>
+                <DataGridTextColumn Header="Phone number" Binding="{Binding phoneNumber}" Visibility="Visible"/>
+                <DataGridTextColumn Header="Age" Binding="{Binding age}" Visibility="Visible"/>
+                <DataGridTextColumn Header="Gender" Binding="{Binding gender}" Visibility="Visible"/>
+                <DataGridTextColumn Header="Adress" Binding="{Binding adress}" Visibility="Visible"/>
+                <DataGridTextColumn Header="Bonus card number" Binding="{Binding BonusCard.number}" Visibility="Visible"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TabControl Margin="10,42,21,98" Grid.Column="1" Grid.Row="1">
+            <TabItem Header="Add">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="AddCustomerFirstNameTextBox" HorizontalAlignment="Left" Margin="10,42,0,0" TextWrapping="Wrap" Text="Enter first name" VerticalAlignment="Top" Width="129"/>
+                    <TextBox x:Name="AddCustomerSecondNameTextBox" HorizontalAlignment="Left" Margin="10,65,0,0" TextWrapping="Wrap" Text="Enter second name" VerticalAlignment="Top" Width="129"/>
+                    <TextBox x:Name="AddCustomerPatrynomicTextBox" HorizontalAlignment="Left" Margin="10,88,0,0" TextWrapping="Wrap" Text="Enter patrynomic" VerticalAlignment="Top" Width="129"/>
+                    <Button x:Name="AddCustomerButton" Content="Add" HorizontalAlignment="Left" Margin="328,115,0,0" VerticalAlignment="Top" Width="46" Click="AddCustomerButton_Click"/>
+                    <Button x:Name="DeleteButton" Content="Delete" HorizontalAlignment="Left" Margin="288,8,0,0" VerticalAlignment="Top" Width="47" Visibility="Hidden"/>
+                    <TextBox x:Name="AddCustomerAgeTextBox" HorizontalAlignment="Left" Margin="163,42,0,0" TextWrapping="Wrap" Text="Age" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="AddCustomerPhoneTextBox" HorizontalAlignment="Left" Margin="163,65,0,0" TextWrapping="Wrap" Text="PhoneNumber" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="AddCustomerGenderTextBox" HorizontalAlignment="Left" Margin="163,88,0,0" TextWrapping="Wrap" Text="Gender" VerticalAlignment="Top" Width="121"/>
+                    <TextBox x:Name="AddCustomerAdressTextBox" HorizontalAlignment="Left" Margin="163,111,0,0" TextWrapping="Wrap" Text="Adress" VerticalAlignment="Top" Width="122"/>
+                    <Label Content="Add new customer" HorizontalAlignment="Left" Margin="131,5,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.717,0.04"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Find">
+                <Grid Background="#FFE5E5E5">
+                    <Button x:Name="DeleteCustomerButton" Content="Delete" HorizontalAlignment="Left" Margin="316,81,0,0" VerticalAlignment="Top" Click="DeleteCustomerButton_Click" Width="44"/>
+                    <Button x:Name="ChangeCustomerButton" Content="Change" HorizontalAlignment="Left" Margin="316,56,0,0" VerticalAlignment="Top" Click="ChangeCustomerButton_Click"/>
+                    <TextBox x:Name="UpdateFirstNameTextBox" HorizontalAlignment="Left" Margin="16,44,0,0" TextWrapping="Wrap" Text="New first name" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="UpdateSecondNameTextBox" HorizontalAlignment="Left" Margin="16,67,0,0" TextWrapping="Wrap" Text="New second name" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="UpdatePatrynomicTextBox" HorizontalAlignment="Left" Margin="16,90,0,0" TextWrapping="Wrap" Text="New patrynomic" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="UpdateAgeTextBox" HorizontalAlignment="Left" Margin="159,44,0,0" TextWrapping="Wrap" Text="New Age" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="UpdatePhoneTextBox" HorizontalAlignment="Left" Margin="159,67,0,0" TextWrapping="Wrap" Text="New Phone" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="UpdateGenderTextBox" HorizontalAlignment="Left" Margin="159,90,0,0" TextWrapping="Wrap" Text="New Gender" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="UpdateAdressTextBox" HorizontalAlignment="Left" Margin="159,113,0,0" TextWrapping="Wrap" Text="New Adress" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Choose customer from table" HorizontalAlignment="Left" Margin="139,10,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Label Content="CUSTOMERS TABLE" HorizontalAlignment="Left" Margin="426,19,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" FontFamily="Arial Black" FontSize="20" Height="33" Width="228"/>
+        <DataGrid x:Name="FilteredCustomersDataGrid" Grid.Row="2" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="2" Margin="0,186,439,0" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Customers Id" Binding="{Binding cuId}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="First name" Binding="{Binding firstName}" Visibility="Visible"/>
+                <DataGridTextColumn Header="Second name" Binding="{Binding secondName}" Visibility="Visible"/>
+                <DataGridTextColumn Header="Patrynomic" Binding="{Binding patrynomic}" Visibility="Visible"/>
+                <DataGridTextColumn Header="Phone number" Binding="{Binding phoneNumber}" Visibility="Visible"/>
+                <DataGridTextColumn Header="Age" Binding="{Binding age}" Visibility="Visible"/>
+                <DataGridTextColumn Header="Gender" Binding="{Binding gender}" Visibility="Visible"/>
+                <DataGridTextColumn Header="Adress" Binding="{Binding adress}" Visibility="Visible"/>
+                <DataGridTextColumn Header="Bonus card number" Binding="{Binding BonusCard.number}" Visibility="Visible"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <ComboBox x:Name="FilterComboBox" HorizontalAlignment="Left" Margin="10,44,0,0" Grid.Row="2" VerticalAlignment="Top" Width="162" SelectionChanged="FilterComboBox_SelectionChanged">
+            <ComboBoxItem Content="Buy's these product"/>
+            <ComboBoxItem Content="Buy's more than"/>
+        </ComboBox>
+        <Label Content="Choose filter" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <TextBox x:Name="FilterCountTextBox" HorizontalAlignment="Left" Margin="190,102,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="14"/>
+        <Label x:Name="FilterLable" Content="Enter filter info" HorizontalAlignment="Left" Margin="190,12,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="14" Width="130"/>
+        <Button x:Name="FilterButton" Content="Execute" HorizontalAlignment="Left" Margin="352,45,0,0" Grid.Row="2" VerticalAlignment="Top" Width="59" Click="FilterButton_Click"/>
+        <ComboBox x:Name="ProductsComboBox" HorizontalAlignment="Left" Margin="190,44,0,0" Grid.Row="2" VerticalAlignment="Top" Width="145">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+    </Grid>
+</Page>

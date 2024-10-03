@@ -1,0 +1,9 @@
+﻿<Application x:Class="for_db7.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:for_db7"
+             StartupUri="Windows/DataWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
